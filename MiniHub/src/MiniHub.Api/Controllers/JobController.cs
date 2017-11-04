@@ -3,30 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MiniHub.Services;
+using MiniHub.Api.Models;
 
-namespace MiniHub.Controllers
+namespace MiniHub.Api.Controllers
 {
     [Route("api/[controller]")]
     public class JobController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IJobService _jobService;
+
+        public JobController(IJobService jobService)
         {
-            return new string[] { "value1", "value2" };
+            _jobService = jobService;
+        }
+        
+        [HttpGet]
+        public string Index()
+        {
+            return "Index!";
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("GetJobViaId/{id}")]
+        public JsonResult GetJobViaId(Guid id)
         {
-            return "value";
+            var job = _jobService.GetJobViaId(id);
+
+            return new JsonResult(job);
+        }
+
+        [HttpGet("GetViaJobReference/{reference}")]
+        public JsonResult GetJobViaRef(string reference)
+        {
+            var job = _jobService.GetJobViaReference(reference);
+
+            return new JsonResult(job);
         }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpPost("CreateJob")]
+        public void CreateJob([FromBody]CreateJobModel model)
         {
+            if (ModelState.IsValid)
+            {
+                var dto = model.ConvertToDto();
+                
+                _jobService.CreateNewJob(dto);
+            }
         }
 
         // PUT api/values/5

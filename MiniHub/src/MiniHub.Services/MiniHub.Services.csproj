@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MiniHub.Data.LiteDb\MiniHub.Data.LiteDb.csproj" />
+    <ProjectReference Include="..\MiniHub.Data\MiniHub.Data.csproj" />
+  </ItemGroup>
+
+</Project>
