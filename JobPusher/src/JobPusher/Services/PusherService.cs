@@ -3,6 +3,8 @@ using System;
 using System.Net.Http;
 using Microsoft.Extensions.Options;
 using JobPusher.Services.Dtos;
+using JobPusher.Services.Requests;
+using Newtonsoft.Json;
 
 namespace JobPusher.Services
 {
@@ -21,9 +23,29 @@ namespace JobPusher.Services
         {
             var job = MapCreateDtoToJob(dto);
 
+            var pusherId = _settings.PusherIdentifier;
+
             var endPoint = _settings.IntegrationPointUrl;
 
-            // new CreateRequest!
+            var jobCreationRequest = new BasicRequest
+            {
+                PusherId = pusherId,
+                Job = job
+            };
+
+            var payload = JsonConvert.SerializeObject(jobCreationRequest);
+
+            HttpContent content = new StringContent(payload);
+            var postTask = _httpClient.PostAsync(endPoint, content);
+
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+                return true;
+            }
 
             return false;
         }

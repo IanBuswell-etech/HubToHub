@@ -8,5 +8,7 @@ namespace JobPusher
     public class ApplicationSettings
     {
         public string IntegrationPointUrl { get; set; }
+
+        public string PusherIdentifier { get; set; }
     }
 }
