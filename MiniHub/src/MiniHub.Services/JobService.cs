@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MiniHub.Data.Entities;
 using MiniHub.Services.Dtos;
 using MiniHub.Data.LiteDb;
@@ -45,6 +46,24 @@ namespace MiniHub.Services
             _databaseContext.PushSomethingIntoDb(newJob);
             
             return newJob;
+        }
+
+        public List<Job> GetAllJobs()
+        {
+            var jobList = new List<Job>();
+
+            try
+            {
+                var jobs = _databaseContext.GetList<Job>();
+
+                jobList = jobs.ToList();
+            }
+            catch (Exception e)
+            {
+                // DO NOTHING
+            }
+
+            return jobList;
         }
     }
 }

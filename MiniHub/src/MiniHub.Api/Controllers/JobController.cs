@@ -40,6 +40,14 @@ namespace MiniHub.Api.Controllers
             return new JsonResult(job);
         }
 
+        [HttpGet("GetAllJobs")]
+        public JsonResult GetAllJobs()
+        {
+            var job = _jobService.GetAllJobs();
+
+            return new JsonResult(job);
+        }
+
         // POST api/values
         [HttpPost("CreateJob")]
         public void CreateJob([FromBody]CreateJobModel model)

@@ -40,8 +40,17 @@ namespace MiniHub.Data.LiteDb
 
             return items;
         }
-                
-        public LiteCollection<T> GetCollection<T>()
+
+        public IEnumerable<T> GetList<T>()
+        {
+            var collection = GetCollection<T>();
+
+            var outCollection = collection.FindAll();
+
+            return outCollection;
+        }
+
+        private LiteCollection<T> GetCollection<T>()
         {
             LiteCollection<T> foundCollection = null;
 

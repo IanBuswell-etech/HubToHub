@@ -1,6 +1,7 @@
 ﻿using MiniHub.Data.Entities;
 using MiniHub.Services.Dtos;
 using System;
+using System.Collections.Generic;
 
 namespace MiniHub.Services
 {
@@ -11,5 +12,7 @@ namespace MiniHub.Services
         Job CreateNewJob(CreateJobDto dto);
 
         Job GetJobViaReference(string reference);
+
+        List<Job> GetAllJobs();
     }
 }
