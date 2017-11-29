@@ -14,5 +14,7 @@ namespace MiniHub.Services
         Job GetJobViaReference(string reference);
 
         List<Job> GetAllJobs();
+
+        bool DeleteJob(string jobRef);
     }
 }

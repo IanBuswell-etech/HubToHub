@@ -50,6 +50,18 @@ namespace MiniHub.Data.LiteDb
             return outCollection;
         }
 
+        public void DeleteFromDb<T>(Expression<Func<T, bool>> predicate)
+        {
+            var collection = GetCollection<T>();
+
+            collection.Delete(predicate);
+        }
+
+        private string GetCollectionName<T>()
+        {
+            return typeof(T).Name;
+        }
+
         private LiteCollection<T> GetCollection<T>()
         {
             LiteCollection<T> foundCollection = null;
@@ -59,11 +71,6 @@ namespace MiniHub.Data.LiteDb
             foundCollection = db.GetCollection<T>(collectionName);
 
             return foundCollection;
-        }
-
-        private string GetCollectionName<T>()
-        {
-            return typeof(T).Name;
         }
     }
 }

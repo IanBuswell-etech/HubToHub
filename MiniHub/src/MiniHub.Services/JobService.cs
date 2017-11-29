@@ -65,5 +65,26 @@ namespace MiniHub.Services
 
             return jobList;
         }
+
+        public bool DeleteJob(string jobRef)
+        {
+            var job = GetJobViaReference(jobRef);
+
+            if (job == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                _databaseContext.DeleteFromDb<Job>(x => x.Reference == jobRef);
+            }
+            catch (Exception e)
+            {
+                // OH NOES
+            }
+
+            return true;
+        }
     }
 }
