@@ -61,8 +61,6 @@ namespace MiniHub.Api
                     template: "{controller=Job}/{action=Index}/{id?}");
             });
 
-
-
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
