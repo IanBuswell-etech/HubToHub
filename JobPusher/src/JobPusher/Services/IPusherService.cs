@@ -10,5 +10,7 @@ namespace JobPusher.Services
         bool UpdateJob(UpdateDto dto);
 
         bool CancelJob(Guid id);
+
+        bool TestConnection();
     }
 }

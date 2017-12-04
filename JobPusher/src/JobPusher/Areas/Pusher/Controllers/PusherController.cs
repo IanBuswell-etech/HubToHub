@@ -25,7 +25,17 @@ namespace JobPusher.Areas.Pusher.Controllers
         public ActionResult Create()
         {
             var vm = new CreateJobViewModel();
-            
+
+            var faker = new Bogus.Faker();
+
+            vm.Ref = faker.Name.FullName();
+
+            var prods = new[] { "Mortage Val", "Homebuyers", "Remote" };
+
+            vm.Product = faker.PickRandom(prods);
+
+            vm.Address = faker.Address.StreetAddress() + faker.Address.ZipCode();
+
             return View(vm);
         }
 
@@ -38,9 +48,14 @@ namespace JobPusher.Areas.Pusher.Controllers
             {
                 var dto = viewModel.ConvertToDto();
 
-                _pusherService.PushJob(dto);
+                var result = _pusherService.PushJob(dto);
 
-                return Ok("Create done");
+                if (result)
+                {
+                    return Ok("Create done");
+                }
+
+                ModelState.TryAddModelError("API", "Failed");
             }
 
             return View();

@@ -49,13 +49,24 @@ namespace MiniHub.Api.Controllers
         }
 
         // POST api/values
-        [HttpPost("CreateJob")]
-        public void CreateJob([FromBody]CreateJobModel model)
+        [HttpPost("Create")]
+        public void Create([FromBody]CreateJobModel model)
         {
             if (ModelState.IsValid)
             {
                 var dto = model.ConvertToDto();
                 
+                _jobService.CreateNewJob(dto);
+            }
+        }
+
+        [HttpPost("CreateJob")]
+        public void CreateJob([FromBody]CreateRequest model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dto = model.Job.ConvertToDto();
+
                 _jobService.CreateNewJob(dto);
             }
         }

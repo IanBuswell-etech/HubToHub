@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using JobPusher.Services.Dtos;
 using JobPusher.Services.Requests;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace JobPusher.Services
 {
@@ -25,7 +26,7 @@ namespace JobPusher.Services
 
             var pusherId = _settings.PusherIdentifier;
 
-            var endPoint = _settings.IntegrationPointUrl;
+            var endPoint = _settings.IntegrationPointUrl + "/job/createjob";
 
             var jobCreationRequest = new BasicRequest
             {
@@ -35,7 +36,8 @@ namespace JobPusher.Services
 
             var payload = JsonConvert.SerializeObject(jobCreationRequest);
 
-            HttpContent content = new StringContent(payload);
+            HttpContent content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
+            
             var postTask = _httpClient.PostAsync(endPoint, content);
 
             postTask.Wait();
@@ -63,12 +65,30 @@ namespace JobPusher.Services
             throw new NotImplementedException();
         }
 
+        public bool TestConnection()
+        {
+            var endPoint = _settings.IntegrationPointUrl + "/Test";
+
+            var postTask = _httpClient.GetAsync(endPoint);
+
+            postTask.Wait();
+
+            var repsonse = postTask.Result;
+
+            if (!repsonse.IsSuccessStatusCode)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private Job MapCreateDtoToJob(CreateDto model)
         {
             var job = new Job
             {
                 Id = Guid.NewGuid(),
-                Ref = model.Ref,
+                Reference = model.Ref,
                 Address = model.Address,
                 Product = model.Product
             };

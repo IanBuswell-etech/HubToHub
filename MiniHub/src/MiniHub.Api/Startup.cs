@@ -56,6 +56,12 @@ namespace MiniHub.Api
                   template: "{area:exists}/{controller}/{action=Index}/{id?}"
                 );
 
+                // Testing route
+                routes.MapRoute(
+                  name: "test",
+                  template: "{controller=Test}/{action=TestConnection}/{id?}"
+                );
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Job}/{action=Index}/{id?}");

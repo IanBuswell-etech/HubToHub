@@ -6,7 +6,7 @@ namespace JobPusher.Data
     {
         public Guid Id { get; set; }
 
-        public string Ref { get; set; }
+        public string Reference { get; set; }
 
         public string Address { get; set; }
 
