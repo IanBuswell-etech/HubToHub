@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniHub.Data", "src\MiniHub.Data\MiniHub.Data.csproj", "{2C025991-F6C6-4A67-9E9B-04892C69E64B}"
 EndProject
@@ -17,7 +17,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniHub.Api", "src\MiniHub.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniHub.Services", "src\MiniHub.Services\MiniHub.Services.csproj", "{190F22E8-780C-4EE1-96F2-9EF4BA8A21BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniHub.MessagePusher", "src\MiniHub.MessagePusher\MiniHub.MessagePusher.csproj", "{499D26AA-E7D7-4C7A-A6EB-31F6E9F6F733}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniHub.MessagePusher", "src\MiniHub.MessagePusher\MiniHub.MessagePusher.csproj", "{499D26AA-E7D7-4C7A-A6EB-31F6E9F6F733}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5F6AA186-A0F3-4707-9E1C-DFD6B278AE0D}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

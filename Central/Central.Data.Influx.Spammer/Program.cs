@@ -12,7 +12,7 @@ namespace Central.Data.Influx.Spammer
         {
             var rand = new Random();
 
-            var influxTalker = new Central.Data.Influx.Talker();
+            var influxTalker = new Talker();
 
             var count = 10;
 

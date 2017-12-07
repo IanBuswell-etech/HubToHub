@@ -10,14 +10,25 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MiniHub.Services;
 using MiniHub.Data.LiteDb;
+using System.IO;
 
 namespace MiniHub.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        ////public Startup(IConfiguration configuration)
+        ////{
+        ////    Configuration = configuration;
+        ////}
+
+        public Startup()
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
