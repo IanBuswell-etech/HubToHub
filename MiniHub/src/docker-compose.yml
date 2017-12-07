@@ -1,7 +1,7 @@
 version: '3'
 services:
-  generator-hub0:
-    container_name: generator-hub-0
+  minihub-0:
+    container_name: mini-hub-0
     build:
       dockerfile: ./MiniHub.Api/Dockerfile
       context: .
