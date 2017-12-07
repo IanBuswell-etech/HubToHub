@@ -3,7 +3,7 @@ services:
   generator-hub0:
     container_name: generator-hub-0
     build:
-      dockerfile: ./MiniHub/src/MiniHub.Api/Dockerfile
+      dockerfile: ./MiniHub.Api/Dockerfile
       context: .
     environment:
       - ThisHub:Id=0
