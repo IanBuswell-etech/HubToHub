@@ -6,13 +6,7 @@ services:
       dockerfile: ./MiniHub.Api/Dockerfile
       context: .
     environment:
-      - ThisHub:Id=0
-      - ThisHub:GeneratorMode=true
-      - ThisHub:DelayInMilliseconds=500
-      - HubRegistry:Urls=http://hub-api0/;http://hub-api1/;http://hub-api2/
+      - ThisHub:Id=0;
       - TZ=Europe/London
-#    depends_on:
-#        - hub-api0
-#        - hub-api1
-#        - hub-api2
- 
+    ports: 
+      - "9080:80" 

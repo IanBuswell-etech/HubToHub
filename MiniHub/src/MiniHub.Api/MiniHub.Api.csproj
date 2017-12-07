@@ -23,5 +23,9 @@
     <ProjectReference Include="..\MiniHub.Data\MiniHub.Data.csproj" />
     <ProjectReference Include="..\MiniHub.Services\MiniHub.Services.csproj" />
   </ItemGroup>
+  
+  <PropertyGroup>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+  </PropertyGroup>
 
 </Project>

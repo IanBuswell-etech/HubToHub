@@ -14,7 +14,7 @@ COPY . .
 WORKDIR /source/MiniHub.Api
 RUN dotnet publish --output /app/ --configuration Release
 
-FROM microsoft/dotnet:2.0.0-runtime
+FROM microsoft/aspnetcore:2.0.0
 WORKDIR /app
 
 COPY --from=builder /app .
