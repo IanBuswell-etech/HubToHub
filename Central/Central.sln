@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Central.Api", "src\Central\Central.Api.csproj", "{FD278CD9-88FE-40E5-9131-F6FC44942540}"
 EndProject
@@ -9,9 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B3C043A5-05F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{25D1975C-0482-409B-8AEE-B655F44B017A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Central.Data.Influx", "Central.Data.Influx\Central.Data.Influx.csproj", "{5DD39EBE-82DC-4605-BC7A-4765E9D54058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Central.Data.Influx", "src\Central.Data.Influx\Central.Data.Influx.csproj", "{5DD39EBE-82DC-4605-BC7A-4765E9D54058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Central.Data.Influx.Spammer", "Central.Data.Influx.Spammer\Central.Data.Influx.Spammer.csproj", "{0C2C4E01-F739-4843-87C6-21CEF560FDBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Central.Data.Influx.Spammer", "src\Central.Data.Influx.Spammer\Central.Data.Influx.Spammer.csproj", "{0C2C4E01-F739-4843-87C6-21CEF560FDBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Central.Data", "src\Central.Data\Central.Data.csproj", "{21B9884C-1ADC-4645-B20D-C304787D57B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Central.Data.LiteDb", "src\Central.Data.LiteDb\Central.Data.LiteDb.csproj", "{17156FDE-4C8D-416A-B448-A856D7506D0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,14 @@ Global
 		{0C2C4E01-F739-4843-87C6-21CEF560FDBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C2C4E01-F739-4843-87C6-21CEF560FDBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C2C4E01-F739-4843-87C6-21CEF560FDBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21B9884C-1ADC-4645-B20D-C304787D57B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B9884C-1ADC-4645-B20D-C304787D57B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B9884C-1ADC-4645-B20D-C304787D57B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B9884C-1ADC-4645-B20D-C304787D57B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17156FDE-4C8D-416A-B448-A856D7506D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17156FDE-4C8D-416A-B448-A856D7506D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17156FDE-4C8D-416A-B448-A856D7506D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17156FDE-4C8D-416A-B448-A856D7506D0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +51,8 @@ Global
 		{FD278CD9-88FE-40E5-9131-F6FC44942540} = {B3C043A5-05F6-40A3-9B0A-9CBC1C4434FB}
 		{5DD39EBE-82DC-4605-BC7A-4765E9D54058} = {B3C043A5-05F6-40A3-9B0A-9CBC1C4434FB}
 		{0C2C4E01-F739-4843-87C6-21CEF560FDBC} = {B3C043A5-05F6-40A3-9B0A-9CBC1C4434FB}
+		{21B9884C-1ADC-4645-B20D-C304787D57B5} = {B3C043A5-05F6-40A3-9B0A-9CBC1C4434FB}
+		{17156FDE-4C8D-416A-B448-A856D7506D0F} = {B3C043A5-05F6-40A3-9B0A-9CBC1C4434FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8AAFBD2-EDDA-4B64-A6E9-E2373FAEFB3F}
