@@ -8,5 +8,7 @@ namespace MiniHub.Api
     public class ApplicationSettings
     {
         public string CentralUrl { get; set; }
+
+        public int HubId { get; set; }
     }
 }

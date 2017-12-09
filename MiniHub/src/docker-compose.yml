@@ -6,7 +6,7 @@ services:
       dockerfile: ./MiniHub.Api/Dockerfile
       context: .
     environment:
-      - ThisHub:Id=0;
+      - ThisHub:HubId=0;
       - TZ=Europe/London
     ports: 
       - "9080:80" 
