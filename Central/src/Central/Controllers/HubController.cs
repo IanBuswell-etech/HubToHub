@@ -1,26 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Central.Data;
+using Central.Data.Entities;
+using System.Linq;
 
 namespace Central.Controllers
 {
     [Route("api/[controller]")]
     public class HubController : Controller
     {
+        private readonly IDataService _dataService;
+
+        public HubController(IDataService dataService)
+        {
+            _dataService = dataService;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> GetHubs()
+        public IEnumerable<HubRegistration> GetHubs()
         {
-            return new string[] { "value1", "value2" };
+            var hubs = _dataService.GetList<HubRegistration>();
+            return hubs;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string GetHub(int id)
+        public JsonResult GetHub(Guid id)
         {
-            return "value";
+            var hub = _dataService.Find<HubRegistration>(x => x.Id == id).FirstOrDefault();
+
+            return new JsonResult(hub);
         }
 
         // POST api/values
@@ -31,8 +42,15 @@ namespace Central.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void AddHub(int id, [FromBody]string value)
+        public void AddHub(Guid id, [FromBody]string value)
         {
+            var newHubRegistration = new HubRegistration
+            {
+                Id = id,
+                IsActive = true,
+                Url = value
+            };
+            _dataService.AddItem(newHubRegistration);
         }
     }
 }
