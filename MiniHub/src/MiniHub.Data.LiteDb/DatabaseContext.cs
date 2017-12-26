@@ -27,7 +27,7 @@ namespace MiniHub.Data.LiteDb
             var collectionName = GetCollectionName<T>();
             var collection = db.GetCollection<T>(collectionName);
 
-            collection.Insert(thingie);
+            var result = collection.Insert(thingie);
             
             return true;
         }
@@ -55,6 +55,16 @@ namespace MiniHub.Data.LiteDb
             var collection = GetCollection<T>();
 
             collection.Delete(predicate);
+        }
+
+        public bool UdpdateSomethingInDb<T>(T thingie)
+        {
+            var collectionName = GetCollectionName<T>();
+            var collection = db.GetCollection<T>(collectionName);
+
+            var result = collection.Update(thingie);
+
+            return result;
         }
 
         private string GetCollectionName<T>()

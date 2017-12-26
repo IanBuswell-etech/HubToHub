@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using MiniHub.Services;
 using MiniHub.Data.LiteDb;
 using System.IO;
+using MiniHub.MessagePusher;
 
 namespace MiniHub.Api
 {
@@ -49,6 +50,10 @@ namespace MiniHub.Api
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
             services.AddTransient<IJobService, JobService>();
+
+            services.AddTransient<IMessagePusher, NullPusher>();
+
+            services.AddTransient<IFirmService, FirmService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

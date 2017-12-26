@@ -4,6 +4,7 @@ using MiniHub.Data.Entities;
 using MiniHub.Services.Dtos;
 using MiniHub.Data.LiteDb;
 using System.Linq;
+using MiniHub.MessagePusher;
 
 namespace MiniHub.Services
 {
@@ -11,18 +12,16 @@ namespace MiniHub.Services
     {
         private readonly DatabaseContext _databaseContext;
 
-        public JobService(DatabaseContext db)
+        public JobService(DatabaseContext db, IMessagePusher pusher)
         {
             _databaseContext = db;
         }
         
         public Job GetJobViaId(Guid id)
         {
-            return new Job
-            {
-                Id = id,
-                Reference = "I'mma fake job"
-            };
+            var foundItem = _databaseContext.Find<Job>(x => x.Id ==  id);
+
+            return foundItem.FirstOrDefault();
         }
 
         public Job GetJobViaReference(string reference)
@@ -85,6 +84,39 @@ namespace MiniHub.Services
             }
 
             return true;
+        }
+
+        public bool AllocateJob(Guid jobId, Guid? firmId)
+        {
+            var job = GetJobViaId(jobId);
+
+            if (job == null)
+            {
+                return false;
+            }
+
+            // Get random firm if none supplied
+            if (firmId == null)
+            {
+                var firms = _databaseContext.GetList<Firm>();
+
+                if (firms.Count() == 0)
+                {
+                    firmId = Guid.NewGuid();
+                }
+                else
+                {
+                    var count = firms.OrderBy(x => x.Id);
+                    var firm = count.First();
+                    firmId = firm.Id;
+                }
+            }
+
+            job.AllocatedFirmId = firmId;
+
+            var result =_databaseContext.UdpdateSomethingInDb(job);
+
+            return result;
         }
     }
 }

@@ -16,5 +16,7 @@ namespace MiniHub.Services
         List<Job> GetAllJobs();
 
         bool DeleteJob(string jobRef);
+
+        bool AllocateJob(Guid jobId, Guid? firmId);
     }
 }

@@ -8,7 +8,7 @@ namespace MiniHub.Data.Entities
     {
         public bool IsExternal { get; set; }
 
-        public string FirmReference { get; set; }
+        public string Reference { get; set; }
 
         // Compound of that minihub's id + a firm ref?
         public string ExternalHubId { get; set; }

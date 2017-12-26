@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MiniHub.Data.LiteDb\MiniHub.Data.LiteDb.csproj" />
     <ProjectReference Include="..\MiniHub.Data\MiniHub.Data.csproj" />
+    <ProjectReference Include="..\MiniHub.MessagePusher\MiniHub.MessagePusher.csproj" />
   </ItemGroup>
 
 </Project>

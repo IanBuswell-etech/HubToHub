@@ -13,5 +13,7 @@ namespace MiniHub.Data.Entities
         public JobStatusEnum Status {get; set; }
 
         public Guid? AllocatedFirmId { get; set; }
+
+        public Guid OwningHubId { get; set; }
     }
 }
